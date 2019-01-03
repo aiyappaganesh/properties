@@ -10,12 +10,12 @@ properties_df = pd.read_csv("Properties.csv")
 property_to_account_df = pd.read_csv("Accounts_properties.csv")
 property_account_join = property_to_account_df.join(properties_df.set_index('id_props'), on='id_props', rsuffix='_prop')
 property_account_join = property_account_join.dropna()
-acc_props = property_account_join.loc[property_account_join['id_accs'].isin(['0012A000023XldlQAC', '0012A000023XqaxQAC'])]
+acc_props = property_account_join.loc[property_account_join['id_accs'].isin(['0012A000023Y1ZgQAK'])]
 properties_df_rank = acc_props.rank()
 cmap = plt.cm.rainbow
-print np.unique(properties_df['num_parking_spaces'].values)
-print np.unique(properties_df_rank['num_parking_spaces'].values)
-values = np.nan_to_num(properties_df_rank['num_parking_spaces'].values)
+print np.unique(properties_df['year_built'].values)
+print np.unique(properties_df_rank['year_built'].values)
+values = np.nan_to_num(properties_df_rank['year_built'].values)
 print np.unique(values)
 print np.mean(values)
 norm = matplotlib.colors.Normalize(vmin=np.amin(values), vmax=np.amax(values))
